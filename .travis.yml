@@ -3,5 +3,7 @@ services:
   - docker
 
 before-install:
-  - docker build -f Dockerfile.dev .
-  
+  - docker build -t segantravisimage -f Dockerfile.dev .
+
+script:
+  - docker run segantravisimage npm run test -- --coverage
