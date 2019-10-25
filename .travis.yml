@@ -2,7 +2,7 @@ sudo: required
 services:
   - docker
 before-install:
-  - docker build -t segantravisimage -f Dockerfile.dev .
+  - docker build -t segan/travisimage -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true segantravisimage npm run test -- --coverage
+  - docker run -e CI=true segan/travisimage npm run test -- --coverage
