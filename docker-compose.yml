@@ -1,0 +1,28 @@
+version: '3'
+services: 
+  web-react:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports: 
+      - "3000:3000"
+    volumes:
+    - /app/node_modules
+    - .:/app
+
+  ##service for second container type here
+
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app 
+      #overriding command below to run npm run test instead of the one mentioned in dockerfile.dev
+    command: ["npm", "run", "test"]
+  
+
+
+
+  
