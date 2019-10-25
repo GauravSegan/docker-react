@@ -1,9 +1,8 @@
 sudo: required
 services:
   - docker
-
 before-install:
   - docker build -t segantravisimage -f Dockerfile.dev .
 
 script:
-  - docker run segantravisimage npm run test -- --coverage
+  - docker run -e CI=true segantravisimage npm run test -- --coverage
